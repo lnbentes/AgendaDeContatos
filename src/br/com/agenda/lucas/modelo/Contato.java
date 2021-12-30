@@ -10,6 +10,9 @@ public class Contato implements Serializable {
     private String numero;
 
     public  Contato (String nome, String endereco, String numero){
+        if(nome == null || endereco == null || numero == null){
+            throw new NullPointerException("Os dados devem ser Preenchidos");
+        }
         this.nome = nome;
         this.endereco = endereco;
         this.numero = numero;

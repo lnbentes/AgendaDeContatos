@@ -3,6 +3,7 @@ package br.com.agenda.lucas.modelo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Locale;
 
 public abstract class Comandos {
 
@@ -42,14 +43,15 @@ public abstract class Comandos {
     }
 
     public void localizarContato(String nome) {
+        String nomeEditado = nome.toUpperCase();
         int i = 0;
         for (Contato contato : this.contatoArmazenado) {
-            if(contato.getNome().contains(nome)){
+            String nomeContatoEditado = contato.getNome().toUpperCase();
+            if(nomeContatoEditado.equals(nomeEditado)){
                 System.out.println(contato);
                 i =1;
             }
         }
-
         if(i == 0){
             System.out.println("Contato nao localizado");
         }

@@ -11,15 +11,15 @@ public class Teste {
 
         BancodeDados2 contatos = new BancodeDados2();
 
-//        contatos.adicionarContato("lucas", "errt", "1234");
-//        contatos.adicionarContato("toso", "afrg", "4321");
+        contatos.adicionarContato("lucas", "errt", "1234");
+        contatos.adicionarContato("toso", "afrg", "4321");
 //
 //        contatos.gravar();
 
-        contatos.leitura();
-        contatos.listadeContatos();
+//        contatos.leitura();
+//        contatos.listadeContatos();
 
-        contatos.localizarContato("Lucas");
+        contatos.localizarContato("LuCas ben");
 
 
     }
