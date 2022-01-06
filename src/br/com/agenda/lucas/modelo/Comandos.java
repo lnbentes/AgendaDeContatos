@@ -3,17 +3,16 @@ package br.com.agenda.lucas.modelo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Locale;
 
 public abstract class Comandos {
 
-    private ArrayList<Contato> contatoArmazenado;//O que coloca no <> vai especificar o tipo do array
+    private final ArrayList<Contato> contatoArmazenado;//O que coloca no <> vai especificar o tipo do array
 
     public Comandos() throws IOException {
         this.contatoArmazenado = new ArrayList<Contato>();
     }
 
-    public void adicionarContato(String nome, String endereco, String telefone){
+    public void adicionarNovoContato(String nome, String endereco, String telefone){
         this.contatoArmazenado.add(new Contato(nome, endereco, telefone));
     }
 
@@ -21,7 +20,7 @@ public abstract class Comandos {
         this.contatoArmazenado.add(referencia);
     }
 
-    public void listadeContatos(){
+    public void listarContatos(){
         this.contatoArmazenado.sort(// Organozar a lista pela ordem alfabatica
                 new Comparator<Contato>() {
                     @Override
@@ -33,13 +32,18 @@ public abstract class Comandos {
                 }
         );
         System.out.println("----------Inicio da Lista de Contatos----------");
-        this.contatoArmazenado.forEach( Contato -> System.out.println(Contato));
+        this.contatoArmazenado.forEach(System.out::println);
         System.out.println("----------Fim da Lista de Contatos--------------");
     }
 
     public void excluirContato(int posicao) {
-        this.contatoArmazenado.remove(posicao - 1);
-        System.out.println("Contato Excluido: ");
+        try {
+            Contato contaExcluida = getContato(posicao);
+            this.contatoArmazenado.remove(posicao);
+            System.out.println("Contato Excluido: " + contaExcluida.getNome());
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Contato nao existe!");
+        }
     }
 
     public void localizarContato(String nome) {
@@ -57,8 +61,8 @@ public abstract class Comandos {
         }
     }
 
-    public Contato getContato(int referencia) {
-        return this.contatoArmazenado.get(referencia);
+    public Contato getContato(int posicao) {
+        return this.contatoArmazenado.get(posicao);
     }
 
     public int getTamanhoDaAgenda() {
@@ -73,13 +77,6 @@ public abstract class Comandos {
     }
     public String getTelefone(int posicao){
         return this.contatoArmazenado.get(posicao).getNumero();
-    }
-
-
-
-    public void cls() { //"limpa" tela
-        for(int i = 0; i < 15; i++)
-            System.out.println("");
     }
 
 }

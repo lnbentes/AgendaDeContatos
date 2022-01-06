@@ -34,7 +34,7 @@ public class BancoDeDados extends Comandos {
         //Converter String para Contatos
         for(int i = 0; i < (dados.size() / 3); i++){
 
-            super.adicionarContato(dados.get(arrayNumero1), dados.get(arrayNumero2), dados.get(arrayNumero3));
+            super.adicionarNovoContato(dados.get(arrayNumero1), dados.get(arrayNumero2), dados.get(arrayNumero3));
 
             arrayNumero1 = arrayNumero1 + 3;
             arrayNumero2 = arrayNumero2 + 3;

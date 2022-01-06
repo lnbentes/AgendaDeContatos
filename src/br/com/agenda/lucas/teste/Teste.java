@@ -1,7 +1,6 @@
 package br.com.agenda.lucas.teste;
 
-import br.com.agenda.lucas.modelo.BancodeDados2;
-import br.com.agenda.lucas.modelo.Contato;
+import br.com.agenda.lucas.modelo.BancodeDadosStream;
 
 import java.io.IOException;
 
@@ -9,17 +8,21 @@ import java.io.IOException;
 public class Teste {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        BancodeDados2 contatos = new BancodeDados2();
+        BancodeDadosStream contatos = new BancodeDadosStream();
 
-        contatos.adicionarContato("lucas", "errt", "1234");
-        contatos.adicionarContato("toso", "afrg", "4321");
+        contatos.adicionarNovoContato("lucas", "errt", "1234");
+        contatos.adicionarNovoContato("toso", "afrg", "4321");
 //
 //        contatos.gravar();
 
 //        contatos.leitura();
-//        contatos.listadeContatos();
+        contatos.listarContatos();
 
-        contatos.localizarContato("LuCas ben");
+        contatos.localizarContato("LuCas");
+
+        contatos.excluirContato(1);
+
+        contatos.listarContatos();
 
 
     }

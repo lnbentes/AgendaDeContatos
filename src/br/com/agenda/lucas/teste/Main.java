@@ -1,12 +1,11 @@
 package br.com.agenda.lucas.teste;
 
 import br.com.agenda.lucas.modelo.BancoDeDados;
-import br.com.agenda.lucas.modelo.Contato;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-public class TestarMenuBanco {
+public class Main {
     public static void main(String[] args) throws IOException {
         Scanner entrada = new Scanner(System.in);
         BancoDeDados contatos = new BancoDeDados();
@@ -22,8 +21,6 @@ public class TestarMenuBanco {
 
             opcao = entrada.nextInt();
 
-            contatos.cls();
-
             switch (opcao){
                 case 1:
                     System.out.println("entre com o Nome do contato:");
@@ -32,12 +29,12 @@ public class TestarMenuBanco {
                     endereco = entrada.next();
                     System.out.println("entre com o Telefone do contato:");
                     telefone = entrada.next();
-                    contatos.adicionarContato(nome, endereco, telefone);
+                    contatos.adicionarNovoContato(nome, endereco, telefone);
                     System.out.println("Contato Armazenado com suceso");
                     break;
 
                 case 2:
-                    contatos.listadeContatos();
+                    contatos.listarContatos();
                     break;
 
                 case 3:
