@@ -1,6 +1,6 @@
-### Agenda de Contatos
+# Agenda de Contatos
 
-## O que pode ser fazer com ela?
+#### O que pode ser fazer com ela?
 
 - Incluir um contato;
 - Listar os contatos existentes;
@@ -9,9 +9,9 @@
 
 ##
 
-### Contact Book
+# Contact Book
 
-## What did it do?
+#### What did it do?
 
 - Incluir a contact;
 - Get a Contact list;
