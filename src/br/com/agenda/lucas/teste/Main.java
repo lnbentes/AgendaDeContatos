@@ -12,17 +12,17 @@ public class Main {
 
         contatos.leitura();
 
-        int opcao = 0, posicao = 0;
+        int opcao;
 
-        String nome = "", endereco = "", telefone = "";
+        String nome, endereco, telefone, contato;
 
         do{
-            System.out.println("Escolha a opção: 1-Incluir  2-Listar  3-Excluir  4-Sair");
+            System.out.println("Escolha a opção: 1-Incluir  2-Listar  3-Excluir 4-Localizar 5-Sair");
 
             opcao = entrada.nextInt();
 
-            switch (opcao){
-                case 1:
+            switch (opcao) {
+                case 1 -> {
                     System.out.println("entre com o Nome do contato:");
                     nome = entrada.next();
                     System.out.println("entre com o Endereco do contato:");
@@ -31,26 +31,22 @@ public class Main {
                     telefone = entrada.next();
                     contatos.adicionarNovoContato(nome, endereco, telefone);
                     System.out.println("Contato Armazenado com suceso");
-                    break;
-
-                case 2:
-                    contatos.listarContatos();
-                    break;
-
-                case 3:
-                    System.out.println("Qual contato quer excuir?");
-                    posicao = entrada.nextInt();
-                    contatos.excluirContato(posicao);
-                    break;
-
-                default:
-                    // Opção Invalida!
-                    System.out.println("Opção Inválida! Tente novamente.");
-                    break;
-
+                }
+                case 2 -> contatos.listarContatos();
+                case 3 -> {
+                    System.out.println("Qual o nome do contato que deseja excuir?");
+                    contato = entrada.next();
+                    contatos.excluirContato(contato);
+                }
+                case 4 -> {
+                    System.out.println("Qual o nome do contato que deseja localizar?");
+                    contato = entrada.next();
+                    contatos.localizarContato(contato);
+                }
+                default -> System.out.println("Opção Inválida! Tente novamente."); // Opção Invalida!
             }
 
-        }while(opcao != 4);
+        }while(opcao != 5);
 
         contatos.gravacao();
 

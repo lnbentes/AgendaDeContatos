@@ -8,10 +8,8 @@ import java.util.Scanner;
 
 public class BancoDeDados extends Comandos {
 
-    private BufferedWriter bw;
-    private Scanner scanner;
     private int arrayNumero1, arrayNumero2, arrayNumero3;
-    private ArrayList<String> dados;
+    private final ArrayList<String> dados;
 
     public BancoDeDados() throws IOException {
         this.arrayNumero1 = 0;
@@ -22,7 +20,7 @@ public class BancoDeDados extends Comandos {
 
 
     public void leitura() throws IOException {
-        this.scanner = new Scanner(new File("bancoDeDados.txt"));
+        Scanner scanner = new Scanner(new File("bancoDeDados.txt"));
 
         //lendo
         while(scanner.hasNextLine()){
@@ -48,7 +46,7 @@ public class BancoDeDados extends Comandos {
 
     public void gravacao() throws IOException {
 
-        bw = new BufferedWriter(new FileWriter("bancoDeDados.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("bancoDeDados.txt"));
 
         //Convertendo o C0ntato para String
         for(int i = 0; i < super.getTamanhoDaAgenda(); i++){
@@ -58,8 +56,8 @@ public class BancoDeDados extends Comandos {
         }
 
         //gravando
-        for(int i = 0; i < this.dados.size(); i++){
-            bw.write(this.dados.get(i));
+        for (String dado : this.dados) {
+            bw.write(dado);
             bw.newLine();
         }
 

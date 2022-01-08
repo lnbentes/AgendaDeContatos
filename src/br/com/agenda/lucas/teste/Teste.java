@@ -12,15 +12,15 @@ public class Teste {
 
         contatos.adicionarNovoContato("lucas", "errt", "1234");
         contatos.adicionarNovoContato("toso", "afrg", "4321");
-//
+
 //        contatos.gravar();
 
 //        contatos.leitura();
         contatos.listarContatos();
 
-        contatos.localizarContato("LuCas");
+        contatos.localizarContato("toSo");
 
-        contatos.excluirContato(1);
+        contatos.excluirContato("toso");
 
         contatos.listarContatos();
 

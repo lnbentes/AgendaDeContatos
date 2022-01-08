@@ -9,7 +9,7 @@ public abstract class Comandos {
     private final ArrayList<Contato> contatoArmazenado;//O que coloca no <> vai especificar o tipo do array
 
     public Comandos() throws IOException {
-        this.contatoArmazenado = new ArrayList<Contato>();
+        this.contatoArmazenado = new ArrayList<>();
     }
 
     public void adicionarNovoContato(String nome, String endereco, String telefone){
@@ -36,39 +36,43 @@ public abstract class Comandos {
         System.out.println("----------Fim da Lista de Contatos--------------");
     }
 
-    public void excluirContato(int posicao) {
+    public void excluirContato(String nome) {
         try {
-            Contato contaExcluida = getContato(posicao);
-            this.contatoArmazenado.remove(posicao);
-            System.out.println("Contato Excluido: " + contaExcluida.getNome());
+            Contato contatoExcluido = getContato(localizador(nome));
+            this.contatoArmazenado.remove(localizador(nome));
+            System.out.println("Contato Excluido: " + contatoExcluido.getNome());
         }catch (IndexOutOfBoundsException e){
             System.out.println("Contato nao existe!");
         }
     }
 
-    public void localizarContato(String nome) {
+    public int localizador(String nome) { //retorna a posicao do contato na array
         String nomeEditado = nome.toUpperCase();
         int i = 0;
         for (Contato contato : this.contatoArmazenado) {
             String nomeContatoEditado = contato.getNome().toUpperCase();
             if(nomeContatoEditado.equals(nomeEditado)){
-                System.out.println(contato);
-                i =1;
+                return i;
             }
+            i++;
         }
-        if(i == 0){
-            System.out.println("Contato nao localizado");
+        return 99999;
+    }
+
+    public void localizarContato(String nome) { //Devolve o contato pelo nome
+        try {
+            System.out.println(this.contatoArmazenado.get(localizador(nome)));
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Contato nao existe!");
         }
     }
 
     public Contato getContato(int posicao) {
         return this.contatoArmazenado.get(posicao);
     }
-
     public int getTamanhoDaAgenda() {
         return this.contatoArmazenado.size();
     }
-
     public String getNome(int posicao){
         return this.contatoArmazenado.get(posicao).getNome();
     }

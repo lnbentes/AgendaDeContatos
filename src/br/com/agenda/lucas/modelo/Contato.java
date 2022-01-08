@@ -1,13 +1,15 @@
 package br.com.agenda.lucas.modelo;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Contato implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
-    private String nome;
-    private String endereco;
-    private String numero;
+    private final String nome;
+    private final String endereco;
+    private final String numero;
 
     public  Contato (String nome, String endereco, String numero){
         if(nome == null || endereco == null || numero == null){
@@ -23,24 +25,12 @@ public class Contato implements Serializable {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
     public String getNumero() {
         return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
     }
 
     @Override
